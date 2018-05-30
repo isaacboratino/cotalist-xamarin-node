@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:AppCotacao.Services.Extensions;assembly=AppCotacao"
+             xmlns:validator="clr-namespace:AppCotacao.Services.ValidatorsBehaviors;assembly=AppCotacao"
+             xmlns:customView="clr-namespace:AppCotacao.Views.Shared.CustomViews;assembly=AppCotacao"
+             x:Class="AppCotacao.Views.Shared.Login"
+             NavigationPage.HasNavigationBar="false">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <ScrollView AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="1,1,1,1">
+
+                <Grid Padding="18,30,18,18">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"  />
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="20" />
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="20" />
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="40" />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="20" />
+                        <ColumnDefinition Width="5" />
+                    </Grid.ColumnDefinitions>
+
+                    <Image Style="{StaticResource ImageGridLogoStyle}"
+                        Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" />
+                    
+                    <Entry Placeholder="Email" 
+                        Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
+                        Text="{Binding UsuarioModel.Email}">
+                            
+                        <Entry.Behaviors>
+                            <validator:EmailValidatorBehavior x:Name="emailValidator"/>
+                        </Entry.Behaviors>
+                    </Entry>
+
+                    <Image x:Name="emailSuccessErrorImage" 
+                        Grid.Row="1" Grid.Column="1"
+                        Style="{Binding Source={x:Reference emailValidator}, Path=IsValid, 
+                                Converter={StaticResource boolToStyleImage}}"/>
+
+                    <Label Grid.Row="2" Grid.Column="0"
+                        Style="{Binding Source={x:Reference emailValidator}, Path=IsValid, 
+                                Converter={StaticResource boolToStyleEmail}}" />
+
+                    <Entry Placeholder="Senha" IsPassword="True" 
+                        Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"
+                        Text="{Binding UsuarioModel.Senha}">
+                            
+                        <Entry.Behaviors>
+                            <validator:PasswordValidatorBehavior x:Name="senhaValidator"/>
+                        </Entry.Behaviors>
+                    </Entry>
+
+                    <Image x:Name="senhaSuccessErrorImage" 
+                        Grid.Row="3" Grid.Column="1"
+                        Style="{Binding Source={x:Reference senhaValidator}, Path=IsValid, 
+                                Converter={StaticResource boolToStyleImage}}"/>
+
+                    <Label Grid.Row="4" Grid.Column="0"
+                        Style="{Binding Source={x:Reference senhaValidator}, Path=IsValid, 
+                                Converter={StaticResource boolToStylePassword}}" 
+                        Margin="0" />
+
+                    <Button 
+                        x:Name="EntrarButton"
+                        Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3"
+                        Text="Entrar"
+                        Clicked="Entrar_Clicked"
+                        Style="{StaticResource ButtonGridPrimaryStyle}" />
+
+                    <Button 
+                        x:Name="CadastrarButton"
+                        Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3"
+                        Text="Cadastre-se"
+                        Clicked="Cadastrar_Clicked"
+                        Style="{StaticResource ButtonGridPrimaryStyle}" />
+
+                    <Label Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3"
+                        Text="ESQUECI MINHA SENHA"
+                        Style="{StaticResource LabelGridCenterStyle}" />
+                    
+                </Grid>
+
+            </ScrollView>
+
+            <customView:LoadingCustomView IsLoading="{Binding IsLoading}"  />
+
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

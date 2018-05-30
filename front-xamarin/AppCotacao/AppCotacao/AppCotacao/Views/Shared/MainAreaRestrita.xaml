@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms" 
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+                  xmlns:local="clr-namespace:AppCotacao.Shared.Services.Extensions;assembly=AppCotacao"
+                  x:Class="AppCotacao.Views.Shared.MainAreaRestrita"
+                  NavigationPage.HasNavigationBar="false"
+                  >
+    <MasterDetailPage.Master>
+        <ContentPage 
+            Icon="hamburger_menu.png" 
+            Title="Menu"
+            NavigationPage.HasNavigationBar="False"
+            BackgroundColor="{StaticResource SecondaryBackColor}">
+            <!-- Menu Title background color -->
+
+            <!-- Slide out Menu -->
+            <StackLayout VerticalOptions="FillAndExpand" Spacing="0" Margin="0" HorizontalOptions="Fill">
+
+                <Grid Margin="15">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Image 
+                        Grid.Row="0" Grid.Column="0"
+                        VerticalOptions="Center" 
+                        HorizontalOptions="Center" 
+                        Source="{DynamicResource ImageIcone}" />
+
+                    <Label 
+                        Grid.Row="0" Grid.Column="1"
+                        Text="Cota Li$ta" 
+                        TextColor="White" 
+                        FontSize="Large" 
+                        VerticalOptions="Center" 
+                        HorizontalOptions="Center" 
+                        Margin="10, 15, 0, 15" />
+
+                </Grid>
+
+                <ListView 
+                        x:Name="MenuListView"
+                        ItemsSource="{Binding MenuItems}"
+                        ItemSelected="MainAreaRestrita_Selected"
+                        VerticalOptions="FillAndExpand"
+                        BackgroundColor="#EFEFEF"
+                        Margin="0">
+                                        
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+
+                                <Grid Margin="0" RowSpacing="30" ColumnSpacing="15">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0" />
+                                        <ColumnDefinition Width="30" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Image 
+                                        Grid.Row="0" Grid.Column="1"
+                                        VerticalOptions="Center" 
+                                        HorizontalOptions="Start"
+                                        Source="{Binding Icon}"
+                                        Margin="0" />
+
+                                    <Label 
+                                        Grid.Row="0" Grid.Column="2"
+                                        Text="{Binding Title}"  
+                                        TextColor="#333333" 
+                                        FontSize="Medium" 
+                                        VerticalOptions="Center" 
+                                        HorizontalOptions="Start"
+                                        Margin="0" />
+
+                                </Grid>
+                                
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    
+                </ListView>
+            </StackLayout>
+
+        </ContentPage>
+    </MasterDetailPage.Master>
+</MasterDetailPage>

@@ -1,0 +1,112 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.4</TargetFramework>
+    <PackageId>Cota Lista</PackageId>
+    <Authors>Isaac Dias Boratino</Authors>
+    <Product>Cota Lista</Product>
+    <Company>Jobs Appss</Company>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\Images\error.png" />
+    <None Remove="Assets\Images\fundocliente - Cópia.jpg" />
+    <None Remove="Assets\Images\fundocliente.jpg" />
+    <None Remove="Assets\Images\fundofornecedor.jpg" />
+    <None Remove="Assets\Images\iconcam.png" />
+    <None Remove="Assets\Images\iconeappcliente.png" />
+    <None Remove="Assets\Images\iconeappfornecedor.png" />
+    <None Remove="Assets\Images\iconechat.png" />
+    <None Remove="Assets\Images\iconecliente.png" />
+    <None Remove="Assets\Images\iconeconfig.png" />
+    <None Remove="Assets\Images\iconecotacao.png" />
+    <None Remove="Assets\Images\iconeempresa.png" />
+    <None Remove="Assets\Images\iconefornecedor.png" />
+    <None Remove="Assets\Images\iconeprincipal.png" />
+    <None Remove="Assets\Images\iconeproduto.png" />
+    <None Remove="Assets\Images\iconesair.png" />
+    <None Remove="Assets\Images\logocliente.png" />
+    <None Remove="Assets\Images\logofornecedor.png" />
+    <None Remove="Assets\Images\success.png" />
+    <None Remove="Views\Shared\LoginCadastro.xaml~RF82192d.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Images\error.png" />
+    <EmbeddedResource Include="Assets\Images\iconcam.png" />
+    <EmbeddedResource Include="Assets\Images\iconeappcliente.png" />
+    <EmbeddedResource Include="Assets\Images\iconechat.png" />
+    <EmbeddedResource Include="Assets\Images\iconecliente.png" />
+    <EmbeddedResource Include="Assets\Images\iconeconfig.png" />
+    <EmbeddedResource Include="Assets\Images\iconecotacao.png" />
+    <EmbeddedResource Include="Assets\Images\iconeempresa.png" />
+    <EmbeddedResource Include="Assets\Images\iconeappfornecedor.png" />
+    <EmbeddedResource Include="Assets\Images\iconefornecedor.png" />
+    <EmbeddedResource Include="Assets\Images\iconeprincipal.png" />
+    <EmbeddedResource Include="Assets\Images\iconeproduto.png" />
+    <EmbeddedResource Include="Assets\Images\iconesair.png" />
+    <EmbeddedResource Include="Assets\Images\logocliente.png" />
+    <EmbeddedResource Include="Assets\Images\logofornecedor.png" />
+    <EmbeddedResource Include="Assets\Images\success.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="System.ComponentModel" Version="4.3.0" />
+    <PackageReference Include="System.Net.Http" Version="4.3.3" />
+    <PackageReference Include="Xamarin.Forms" Version="2.5.0.121934" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\Shared\LoginCadastro.xaml.cs">
+      <DependentUpon>LoginCadastro.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Model\MainAreaRestritaMenuItemModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Data\ServicesGraphql\" />
+    <Folder Include="ViewModels\Cliente\" />
+    <Folder Include="ViewModels\Fornecedor\" />
+    <Folder Include="Views\Cliente\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Views\Fornecedor\Clientes.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Fornecedor\Cotacoes.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Shared\CustomViews\LoadingCustomView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Shared\Chat.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Shared\DadosEmpresa.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Fornecedor\MainPageFornecedor.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Fornecedor\Produtos.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Shared\Configuracoes.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Shared\LoginCadastro.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Shared\Login.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Shared\MainAreaRestrita.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

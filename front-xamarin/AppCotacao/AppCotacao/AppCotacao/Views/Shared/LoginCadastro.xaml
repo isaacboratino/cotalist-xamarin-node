@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:AppCotacao.Services.Extensions;assembly=AppCotacao"
+             xmlns:validator="clr-namespace:AppCotacao.Services.ValidatorsBehaviors;assembly=AppCotacao"
+             xmlns:customView="clr-namespace:AppCotacao.Views.Shared.CustomViews;assembly=AppCotacao"
+             x:Class="AppCotacao.Views.Shared.LoginCadastro"             
+             Title="Cadastro Usuário">
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="{DynamicResource ImageIcone}" />
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <ScrollView AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="1,1,1,1">
+                <Grid Padding="18">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="50" />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="20" />
+                    </Grid.ColumnDefinitions>
+
+                    <!-- 
+                        Title section 
+                    -->
+                    <ContentView Style="{StaticResource LabelSectionTitleContainerStyle}"
+                        Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
+                        <Label 
+                            Text="DADOS DA EMPRESA"                                        
+                            Style="{StaticResource LabelSectionTitleStyle}" />
+                    </ContentView>
+
+                    <!-- 
+                        Logo empresa
+                    
+                    <ContentView 
+                        BackgroundColor="#EFEFEF"
+                        Grid.Row="1" Grid.Column="0" Grid.RowSpan="4">
+                        <Image 
+                            Margin="14"
+                            BackgroundColor="#EFEFEF"
+                            Source="{local:ImageResource AppCotacao.Assets.Images.iconcam.png}" />
+                    </ContentView>
+                    -->
+                    
+                    <!-- 
+                        Nome Empresa entry
+                    -->
+                    <Entry Placeholder="Nome empresa"
+                        Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
+                        Text="{Binding UsuarioModel.PessoaJuridicaModel.RazaoSocial}">
+
+                        <Entry.Behaviors>
+                            <validator:RequiredValidatorBehavior x:Name="requiredValidator"/>
+                        </Entry.Behaviors>
+                    </Entry>
+
+                    <Image Grid.Row="1" Grid.Column="2"
+                        Style="{Binding Source={x:Reference requiredValidator}, Path=IsValid, 
+                        Converter={StaticResource boolToStyleImage}}"/>
+
+                    <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
+                        Style="{Binding Source={x:Reference requiredValidator}, Path=IsValid, 
+                        Converter={StaticResource boolToStyleRequired}}" 
+                        Margin="0" />
+
+                    <!-- 
+                        CNPJ entry
+                    -->
+                    <Entry Placeholder="CNPJ"
+                        Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"
+                        TextChanged="entryCNPJTextChanged"
+                        Text="{Binding UsuarioModel.PessoaJuridicaModel.CNPJ}">
+
+                        <Entry.Behaviors>
+                            <validator:CNPJValidatorBehavior x:Name="cnpjValidator"/>
+                        </Entry.Behaviors>
+                    </Entry>
+
+                    <Image Grid.Row="3" Grid.Column="2"
+                        Style="{Binding Source={x:Reference cnpjValidator}, Path=IsValid, 
+                        Converter={StaticResource boolToStyleImage}}"/>
+
+                    <Label Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3"
+                        Style="{Binding Source={x:Reference cnpjValidator}, Path=IsValid, 
+                        Converter={StaticResource boolToStyleEmail}}" 
+                        Margin="0" />
+
+                    <!-- 
+                        Dados section 
+                    -->
+                    <ContentView Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3"
+                        Style="{StaticResource LabelSectionTitleContainerStyle}">
+                        <Label 
+                            Text="DADOS DE ACESSO"                                        
+                            Style="{StaticResource LabelSectionTitleStyle}" />
+                    </ContentView>
+
+                    <!-- 
+                        Email entry
+                    -->
+                    <Entry Placeholder="Email"
+                        Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3"
+                        Text="{Binding UsuarioModel.Email}">
+
+                        <Entry.Behaviors>
+                            <validator:EmailValidatorBehavior x:Name="emailValidator"/>
+                        </Entry.Behaviors>
+                    </Entry>
+
+                    <Image Grid.Row="6" Grid.Column="2"
+                        Style="{Binding Source={x:Reference emailValidator}, Path=IsValid, 
+                        Converter={StaticResource boolToStyleImage}}"/>
+
+                    <Label Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3"
+                        Style="{Binding Source={x:Reference emailValidator}, Path=IsValid, 
+                        Converter={StaticResource boolToStyleEmail}}" 
+                        Margin="0" />
+
+                    <!-- 
+                        Senha entry
+                    -->
+                    <Entry Placeholder="Senha" IsPassword="True" 
+                        Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3"
+                        Text="{Binding UsuarioModel.Senha}">
+
+                        <Entry.Behaviors>
+                            <validator:PasswordValidatorBehavior x:Name="senhaValidator"/>
+                        </Entry.Behaviors>
+                    </Entry>
+
+                    <Image
+                        Grid.Row="8" Grid.Column="2"
+                        Style="{Binding Source={x:Reference senhaValidator}, Path=IsValid, 
+                                Converter={StaticResource boolToStyleImage}}"/>
+
+                    <Label Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="3"
+                        Style="{Binding Source={x:Reference senhaValidator}, Path=IsValid, 
+                                Converter={StaticResource boolToStylePassword}}" />
+
+                    <!-- 
+                        Confirmacao Senha entry
+                    -->
+                    <Entry Placeholder="Confirmacao Senha" IsPassword="True" 
+                        Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="3"
+                        Text="{Binding ConfirmacaoSenha}">
+
+                        <Entry.Behaviors>
+                            <validator:PasswordValidatorBehavior x:Name="confirmacaoSenhaValidator"/>
+                        </Entry.Behaviors>
+                    </Entry>
+
+                    <Image
+                        Grid.Row="10" Grid.Column="2"
+                        Style="{Binding Source={x:Reference confirmacaoSenhaValidator}, Path=IsValid, 
+                                Converter={StaticResource boolToStyleImage}}"/>
+
+                    <Label Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="3"
+                        Style="{Binding Source={x:Reference confirmacaoSenhaValidator}, Path=IsValid, 
+                                Converter={StaticResource boolToStylePassword}}" />
+
+                    <Button Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="3"
+                        x:Name="CadastrarButton"
+                        Text="Gravar" 
+                        Clicked="Cadastrar_Clicked"
+                        Style="{StaticResource ButtonPrimaryStyle}" />
+                
+                </Grid>
+                
+            </ScrollView>
+
+            <customView:LoadingCustomView IsLoading="{Binding IsBusy}"  />
+
+        </AbsoluteLayout>
+    </ContentPage.Content>
+    
+</ContentPage>
